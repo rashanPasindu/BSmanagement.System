@@ -39,6 +39,12 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
          ptypebox.setSelectedIndex(0);
     }
     
+    public void clear2()
+    {
+            rs=null;
+         jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+    }
+    
     public void tableload()
     {
         try {
@@ -90,10 +96,13 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
         jButton11 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setMaximumSize(new java.awt.Dimension(1366, 768));
+        setMinimumSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1366, 768));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton2.setText("BACK");
@@ -102,6 +111,7 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 660, 120, 46));
 
         ptypebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a Product Type", "Adhesives", "Glue", "Tape", "Adhesive Applicators", "Adhesive Removers", "All-Purpose Glue", "Super Glue", "Construction Glue", "Contact Cements", "Duct & Cloth Tape", "Epoxy Adhesives", "Floor & Tile Adhesives", "Glass & Mirror Adhesives", "Masking Paper", "Masking Tape", "Plastic Tapes", "Repair Adhesives", "Velcro", "Vinyl / Pool Adhesives", "Wood Glue", "Acrylic Sheeting", "Ceiling Material", "Concrete / Blacktop / Sand", "Deck & Roofing Fasteners", "Fastener Kits", "Insulation", "Polyethelene Sheeting", "Metal Goods", "Sandpaper & Steel Wool", "Wood Dowels", "Wood Products", "Wood Repair", "Wood Shims / Specialty Products", "Ventilation", "Hardware Cloth", "Decorator Brick / Accessories", "Rails & Accessories", "Hobby Materials", "Synthetic Filament Rope", "Rope", "Chain & Cable Fittings", "Clothesline", "Sashes, Blinds & Drapery Cord", "Straps, Clamps & Tightener", "Twine & String", "Carbon Monoxide Detectors", "Smoke Detectors", "Child Safety", "Door Locks & Handles", "Specialty Safety & Security Items", "Safety Test Kits", "Fire Extinguishers", "Home Security System", "Safes", "Security Bars", "Paint", "Primers", "Wood Stains, Sealers & Clear Topcoats", "Concrete & Masonry Products", "Aerosols", "Faux Finishing", "Paint & Coatings Calculator", "Deck Stains & Supplies", "Siding Stains", "Aerosols", "Concrete & Masonry Products", "Paint & Coatings Calculator", "Brushes", "Roller Covers, Frames & Accessories", "Tape & Masking", "Sandpaper & Abrasives", "Drop Cloths & Plastic Sheeting", "Caulks, Sealants & Caulking Tools", "Patching & Repair", "Painter's Tools", "Cleaning Supplies", "Safety Equipment", "Solvents & Removers", "Wallpaper Tools & Paste", "Drywall Compounds & Tools", "Painter's Wear", "Ladders, Scaffolds & Climbing Equipment", "Spray Equipment", "PVC DWV Pipe", "Brass Pipe", "CPVC Pipe", "Copper Pipe", "Galvanized Pipe", "PEX Pipe", "Polyethylene Pipe", "Sewer & Drain", "Specialty Pipe", "Vinyl Pipe & Tubing", "PVC Fittings", "CPVC Fittings", "Brass Fittings", "Copper Fittings", "Galvanized Fittings", "Black Iron Fittings", "Cast Iron Fittings", "PEX Fittings", "Polyethylene Fittings", "Specialty Fittings", "ABS DWV Fittings", " " }));
         ptypebox.addActionListener(new java.awt.event.ActionListener() {
@@ -109,9 +119,11 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
                 ptypeboxActionPerformed(evt);
             }
         });
+        getContentPane().add(ptypebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 59, 227, 33));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Product Type ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 66, -1, -1));
 
         xyz.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -130,6 +142,8 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(xyz);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 123, 1296, 280));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -223,8 +237,12 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(42, 438, -1, -1));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("BALANCE STOCK VALUATION");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 10, -1, -1));
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton9.setText("Search");
@@ -233,6 +251,7 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(419, 57, 130, 36));
 
         jButton10.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton10.setText("Calculate Cost");
@@ -241,6 +260,7 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
                 jButton10ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton10, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 438, 138, 41));
 
         jButton11.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton11.setText("Clear");
@@ -249,6 +269,7 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
                 jButton11ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton11, new org.netbeans.lib.awtextra.AbsoluteConstraints(567, 57, 130, 36));
 
         jTable1.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -256,72 +277,19 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ProductType", "Total_Quantity", "Total_Sum"
+                "ProductType", "Total_Remaining_Quantity", "Total_Sum"
             }
         ));
         jScrollPane2.setViewportView(jTable1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(42, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(166, 166, 166)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(jScrollPane2))))
-                .addGap(31, 31, 31))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel4)
-                        .addGap(48, 48, 48)
-                        .addComponent(ptypebox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(35, 35, 35)
-                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(501, 501, 501)
-                        .addComponent(jLabel13)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jLabel13)
-                .addGap(28, 28, 28)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(ptypebox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton11, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 280, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(35, 35, 35)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jButton10, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 116, Short.MAX_VALUE)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(30, 30, 30))
-        );
+        getContentPane().add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(626, 486, 712, 160));
 
-        pack();
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backgrnd1.png"))); // NOI18N
+        jLabel15.setName(""); // NOI18N
+        getContentPane().add(jLabel15, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
+
+        setSize(new java.awt.Dimension(1366, 768));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -334,7 +302,24 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void ptypeboxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ptypeboxActionPerformed
-        // TODO add your handling code here:
+        //SAME CODE FOR SERARCHING 
+        String pt = ptypebox.getSelectedItem().toString();
+        
+        String sql="SELECT ProductID,ProductName,ProductType,Manufacture,Quantity,CostPerUnit FROM products WHERE "
+                + "productType LIKE '"+pt+"' ";
+         
+        
+        try{
+            
+        pst = con.prepareStatement(sql);
+        rs = pst.executeQuery();
+        xyz.setModel(DbUtils.resultSetToTableModel(rs));
+        
+        
+        }catch(Exception e)
+        {
+            
+        }
     }//GEN-LAST:event_ptypeboxActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
@@ -371,8 +356,8 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
        // String sql="SELECT ProductType,Manufacture,(Quantity*CostPerUnit)as Total_Cost FROM products WHERE "
          //+ "productType LIKE '%"+pt+"%'";
          
-         String sql="SELECT ProductType,sum(Quantity)as Total_Quantity,sum(Quantity*CostPerUnit)as Total_sum FROM products WHERE "
-         + "productType LIKE '%"+pt+"%'";
+         String sql="SELECT ProductType,sum(Quantity)as Total_Remaining_Quantity,sum(Quantity*CostPerUnit)as Total_sum FROM products WHERE "
+         + "ProductType LIKE '%"+pt+"%'";
         
         pst = con.prepareStatement(sql);
         rs =pst.executeQuery();
@@ -393,6 +378,7 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
         // TODO add your handling code here:
         clear1();
         tableload();
+        
     }//GEN-LAST:event_jButton11ActionPerformed
 
     private void xyzMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_xyzMouseClicked
@@ -471,6 +457,7 @@ public class v_balance_stock_valuation extends javax.swing.JFrame {
     private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

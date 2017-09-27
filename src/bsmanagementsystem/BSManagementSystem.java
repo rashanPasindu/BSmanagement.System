@@ -5,6 +5,8 @@
  */
 package bsmanagementsystem;
 
+import itp.project.x.Interfaces.login;
+
 /**
  *
  * @author Rashan
@@ -16,7 +18,9 @@ public class BSManagementSystem {
      */
     public static void main(String[] args) {
         
-        new MainPage().setVisible(true);
+        new login().setVisible(true);
+        
+        //new MainPage().setVisible(true);
         // TODO code application logic here
     }
     

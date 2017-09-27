@@ -7,6 +7,7 @@ package bsmanagementsystem;
 
 import DBConnect.DBconnect;
 import classes.approval;
+import classes.validations;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -68,10 +69,12 @@ public class Approval extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jDateChooser2 = new com.toedter.calendar.JDateChooser();
         jButton2 = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1366, 768));
-        setPreferredSize(new java.awt.Dimension(1366, 768));
+        setMinimumSize(new java.awt.Dimension(1366, 768));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton1.setText("Back");
@@ -83,6 +86,7 @@ public class Approval extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1230, 30, 120, 46));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -95,7 +99,20 @@ public class Approval extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setEnabled(false);
+        jTable1.addContainerListener(new java.awt.event.ContainerAdapter() {
+            public void componentAdded(java.awt.event.ContainerEvent evt) {
+                jTable1ComponentAdded(evt);
+            }
+        });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTable1);
+
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 820, 513));
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select", "Administration Expenses", "Petty Cash Expenses", "Maintenance Exp", "Other Expenses" }));
@@ -107,14 +124,17 @@ public class Approval extends javax.swing.JFrame {
                 jComboBox1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 196, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Approvals");
         jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jLabel2.setMaximumSize(new java.awt.Dimension(216, 54));
         jLabel2.setMinimumSize(new java.awt.Dimension(216, 54));
         jLabel2.setPreferredSize(new java.awt.Dimension(216, 54));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 50, -1, -1));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -122,16 +142,21 @@ public class Approval extends javax.swing.JFrame {
         jLabel1.setMaximumSize(new java.awt.Dimension(188, 54));
         jLabel1.setMinimumSize(new java.awt.Dimension(188, 54));
         jLabel1.setPreferredSize(new java.awt.Dimension(188, 54));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 195, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel3.setText("Period");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(14, 314, 188, 57));
 
         jTextField1.setEditable(false);
+        getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 321, 216, 46));
 
+        jDateChooser1.setDateFormatString("yyyy-MM-dd");
         jDateChooser1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jDateChooser1.setMinimumSize(new java.awt.Dimension(216, 50));
         jDateChooser1.setPreferredSize(new java.awt.Dimension(216, 50));
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 424, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -139,6 +164,7 @@ public class Approval extends javax.swing.JFrame {
         jLabel5.setMaximumSize(new java.awt.Dimension(188, 54));
         jLabel5.setMinimumSize(new java.awt.Dimension(188, 54));
         jLabel5.setPreferredSize(new java.awt.Dimension(188, 54));
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 438, 91, 29));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -146,10 +172,13 @@ public class Approval extends javax.swing.JFrame {
         jLabel4.setMaximumSize(new java.awt.Dimension(188, 54));
         jLabel4.setMinimumSize(new java.awt.Dimension(188, 54));
         jLabel4.setPreferredSize(new java.awt.Dimension(188, 54));
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(73, 515, 91, 29));
 
+        jDateChooser2.setDateFormatString("yyyy-MM-dd");
         jDateChooser2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jDateChooser2.setMaximumSize(new java.awt.Dimension(105, 22));
         jDateChooser2.setMinimumSize(new java.awt.Dimension(105, 22));
+        getContentPane().add(jDateChooser2, new org.netbeans.lib.awtextra.AbsoluteConstraints(214, 492, 216, 49));
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("Show");
@@ -161,85 +190,13 @@ public class Approval extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(177, 630, 130, 36));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(60, 60, 60)
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(48, 48, 48))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(14, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 91, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(50, 50, 50)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jDateChooser1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jDateChooser2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jTextField1)
-                            .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGap(75, 75, 75))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(198, 198, 198)))
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 820, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(57, 57, 57)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(36, 36, 36)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(67, 67, 67)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 48, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(86, 86, 86))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jDateChooser1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jDateChooser2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(89, 89, 89)))
-                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 42, Short.MAX_VALUE)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 513, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(78, 78, 78))
-        );
+        jLabel6.setIcon(new javax.swing.ImageIcon("C:\\Users\\Rashan\\Desktop\\ITP\\Design\\backgrnd1.png")); // NOI18N
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, -2, -1, 770));
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -250,60 +207,72 @@ public class Approval extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
+       approval ap = new approval();
+       try{ 
         Sdate = getStartDate();
         Edate = getEndDate();
-        String m =getMonthStart();
+        String m = getMonthStart();
         //String m1,m2,m3;
         String m4 = getMonthEnd();
         
+      
+        String dis = ap.concat(Sdate,Edate,m,m4);
+       
+        jTextField1.setText(dis);
+       //tableLoad(this.getCat());
+       
+        String s = this.getStartDateFormat();
+        String e = this.getEndDateFormat();
+          
+        ap.getapprovals(this.getCat(),s,e);
         
-       String dis = new approval().concat(Sdate,Edate,m,m4);
-       jTextField1.setText(dis);
-       tableLoad(this.getCat());
+       }
+       catch (Exception e){
+           System.out.println(e);
+            new validations().validateApproval();
+       }
+       //boolean validateApproval = val.validateApproval();
+        /*if (validateApproval != false){
+        
+        
+        }*/
       //tableLoadQuery();
-        //tableLoad();
+      /*  showTable();
+        int row = 0; /*=jTable1.getSelectedRow();
+        int lrow = jTable1.getRowCount();
+        int strt,end;
+          
+       strt = this.getCorectStrtrow(row,lrow);
+       end = this.getCorectEndrow(row, lrow);
+       
+       loadT(strt,end);*/
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         showTable();
     }//GEN-LAST:event_jComboBox1ActionPerformed
-    
-         public final void tableLoad(String cat2){
-             
-          // getapprovals(this.getCat(),this.getStartDateFormat(),this.getEndDateFormat().toString());
-      
-     }
-    /*     
-     public final void tableLoadQuery(){
-         approval app1 = new approval();
 
-         PreparedStatement pst1=null;
-         ResultSet rs1 = null;
-         con = DBconnect.connect();
-         String start = getStartDateFormat();
-         String end = getEndDateFormat();
-         String ssql = approvals1(this.jComboBox1.getSelectedItem().toString(),start,end);
-         try
-        {
-            
-            String sql = ssql;
-            //sql = "SELECT Category = '"+cat+"' & Start = '"+Sdate+"' & End = '"+Edate+"' FROM approval";
-            pst1 = con.prepareStatement(sql);
-            rs1 = pst1.executeQuery(sql);
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
-            //JOptionPane.showMessageDialog(null,"Successfull");
+    @SuppressWarnings("empty-statement")
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+       
+    }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTable1ComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTable1ComponentAdded
         
-        }
-              
-    catch(SQLException e)
-                {
-                    System.out.println(e);
-                    JOptionPane.showMessageDialog(null,"UN-Successfull");
-                }
+    }//GEN-LAST:event_jTable1ComponentAdded
+    
+    public final void tableLoad(String cat2){
+             
+          String s = this.getStartDateFormat();
+          String e = this.getEndDateFormat();
+          
+          new approval().getapprovals(this.getCat(),s,e);
+          
+           
      }
-     */
-      private void loadtable(String cat){
+   
+ 
+      public void loadtable(String cat){
           
          PreparedStatement pst1=null;
          ResultSet rs1 = null;
@@ -311,87 +280,88 @@ public class Approval extends javax.swing.JFrame {
         // String start = getStartDateFormat();
          // end = getEndDateFormat();
         
-         if(cat == "Administration Expenses"){
-         try
-        {
-            
-            String sql;
-            sql = "SELECT ExpenseID,Category,Amount,Approval FROM adminexpenses";
-            pst1 = con.prepareStatement(sql);
-            rs1 = pst1.executeQuery(sql);
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
-            //JOptionPane.showMessageDialog(null,"Successfull");
-        
-        }
-              
-    catch(SQLException e)
+         if(null == cat){}
+      else switch (cat) {
+            case "Administration Expenses":
+                try
+                {
+                    
+                    String sql;
+                    sql = "SELECT ExpenseID,Category,Amount,Approval,Date FROM adminexpenses";
+                    pst1 = con.prepareStatement(sql);
+                    rs1 = pst1.executeQuery(sql);
+                    
+                    jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+                    //JOptionPane.showMessageDialog(null,"Successfull");
+                    
+                }
+                
+                catch(SQLException e)
                 {
                     System.out.println(e);
                     JOptionPane.showMessageDialog(null,"UN-Successfull");
                 }
-          
-      }
-      else if(cat == "Maintenance Exp"){
-           try
-        {
-            
-            String sql;
-            sql = "SELECT ExpenseID,Category,Amount,Approval FROM maintainexp";
-            pst1 = con.prepareStatement(sql);
-            rs1 = pst1.executeQuery(sql);
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
-            //JOptionPane.showMessageDialog(null,"Successfull");
-        
-        }
-              
-    catch(SQLException e)
+                break;
+            case "Maintenance Exp":
+                try
+                {
+                    
+                    String sql;
+                    sql = "SELECT ExpenseID,Category,Amount,Approval,Date FROM maintainexp";
+                    pst1 = con.prepareStatement(sql);
+                    rs1 = pst1.executeQuery(sql);
+                    jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+                    //JOptionPane.showMessageDialog(null,"Successfull");
+                    
+                }
+                
+                catch(SQLException e)
                 {
                     System.out.println(e);
                     JOptionPane.showMessageDialog(null,"UN-Successfull");
                 }
-          
-      }
-       else if(cat == "Petty Cash Expenses"){
-           try
-        {
-            
-            String sql;
-            sql = "SELECT ExpenseID,Category,Amount,Approval FROM pettycashexp";
-            pst1 = con.prepareStatement(sql);
-            rs1 = pst1.executeQuery(sql);
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
-            //JOptionPane.showMessageDialog(null,"Successfull");
-        
-        }
-              
-    catch(SQLException e)
+                break;
+            case "Petty Cash Expenses":
+                try
+                {
+                    
+                    String sql;
+                    sql = "SELECT ExpenseID,Category,Amount,Approval,Date FROM pettycashexp";
+                    pst1 = con.prepareStatement(sql);
+                    rs1 = pst1.executeQuery(sql);
+                    jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+                    //JOptionPane.showMessageDialog(null,"Successfull");
+                    
+                }
+                
+                catch(SQLException e)
                 {
                     System.out.println(e);
                     JOptionPane.showMessageDialog(null,"UN-Successfull");
                 }
-          
-      }
-       else if(cat == "Other Expenses"){
-           try
-        {
-            
-            String sql;
-            sql = "SELECT ExpenseID,Category,Amount,Approval FROM otherexp";
-            pst1 = con.prepareStatement(sql);
-            rs1 = pst1.executeQuery(sql);
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
-            //JOptionPane.showMessageDialog(null,"Successfull");
-        
-        }
-              
-    catch(SQLException e)
+                break;
+            case "Other Expenses":
+                try
+                {
+                    
+                    String sql;
+                    sql = "SELECT ExpenseID,Category,Amount,Approval,Date FROM otherexp";
+                    pst1 = con.prepareStatement(sql);
+                    rs1 = pst1.executeQuery(sql);
+                    jTable1.setModel(DbUtils.resultSetToTableModel(rs1));
+                    //JOptionPane.showMessageDialog(null,"Successfull");
+                    
+                }
+                
+                catch(SQLException e)
                 {
                     System.out.println(e);
                     JOptionPane.showMessageDialog(null,"UN-Successfull");
                 }
-          
-      }
-      else{}
+                break;
+            default:
+                break;
+        }
     
 }
       private void showTable(){
@@ -399,89 +369,7 @@ public class Approval extends javax.swing.JFrame {
           loadtable(this.getCat());
       }
     
-    /*  public void getapprovals(String cat,String start,String end){
-      
-       con = DBconnect.connect();
-      
-       
-       if (null == cat){
-           JOptionPane.showMessageDialog(null,"UN-Successfull - Invalid Category");
-       }
-       else switch (cat) {
-            case "Administration Expenses":
-                try
-                {
-                    String s = "SELECT ExpenseID,Category,Approval FROM adminexpenses WHERE Date BETWEEN '"+start+"' and '"+end+"';";
-                    pst = con.prepareStatement(s);
-                    rs = pst.executeQuery(s);
-                    jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-                    JOptionPane.showMessageDialog(null,"Entry Successfull");
-                    
-                }
-                
-                catch(SQLException e)
-                {
-                    System.out.println(e);
-                    JOptionPane.showMessageDialog(null,"Entry UN-Successfull");
-                }
-                break;
-            case "Maintenance Expenses":
-                try
-                {
-                    String s = "SELECT ExpenseID,Category,Approval FROM maintainexp WHERE Date BETWEEN '"+start+"' and '"+end+"';";
-                    pst = con.prepareStatement(s);
-                    rs = pst.executeQuery(s);
-                    jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-                    JOptionPane.showMessageDialog(null,"Entry Successfull");
-                    
-                }
-                
-                catch(SQLException e)
-                {
-                    System.out.println(e);
-                    JOptionPane.showMessageDialog(null,"Entry UN-Successfull");
-                }
-                break;
-            case "PettyCash Expenses":
-                try
-                {
-                    String s = "SELECT ExpenseID,Category,Approval FROM pettycashexp WHERE Date BETWEEN '"+start+"' and '"+end+"';";
-                    pst = con.prepareStatement(s);
-                    rs= pst.executeQuery(s);
-                    jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-                    JOptionPane.showMessageDialog(null,"Entry Successfull");
-                    
-                }
-                
-                catch(SQLException e)
-                {
-                    System.out.println(e);
-                    JOptionPane.showMessageDialog(null,"Entry UN-Successfull");
-                }
-                break;
-            case "Other Expenses":
-                try
-                {
-                    String s = "SELECT ExpenseID,Category,Approval FROM otherexp WHERE Date BETWEEN '"+start+"' and '"+end+"';";
-                    pst = con.prepareStatement(s);
-                    rs = pst.executeQuery(s);
-                    jTable1.setModel(DbUtils.resultSetToTableModel(rs));
-                    JOptionPane.showMessageDialog(null,"Entry Successfull");
-                    
-                }
-                
-                catch(SQLException e)
-                {
-                    System.out.println(e);
-                    JOptionPane.showMessageDialog(null,"Entry UN-Successfull");
-                }
-                break;
-            default:
-                JOptionPane.showMessageDialog(null,"UN-Successfull - Invalid Category");
-                break;
-        }
-       
-   }*/
+    
     String getCat(){
       
         String a = jComboBox1.getSelectedItem().toString() ;
@@ -594,64 +482,61 @@ String getMonthEnd(){
 
  private String getStartDateFormat(){
      
-     String SDate = this.jDateChooser1.getDate().toString();
+     //String SDate = this.jDateChooser1.getDate().toString();
      
-     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-     String format = formatter.format(SDate);
-     System.out.println(SDate);
-     return SDate;
+     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+     
+     String date1 = sdf.format(this.jDateChooser1.getDate());
+     
+     System.out.println(date1);
+     
+     return date1;
  }
  
  private String getEndDateFormat(){
-     String EDate = this.jDateChooser2.getDate().toString();
+     //String EDate = this.jDateChooser2.getDate();
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
      
-     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-     String format = formatter.format(EDate);
-     System.out.println(EDate);
-     return EDate;
+     String date1 = sdf.format(this.jDateChooser2.getDate());
+     
+     System.out.println(date1);
+      
+     return date1;
  }
-public String approvals1(String cat,String start,String end){
-          
-       cat1 = cat;
-       start1 = start;
-       end1 = end;   
-       String s;
-       
-       if ("Administration Expenses".equals(cat1)){
-
-            s = "SELECT ExpenseID,Category,Approval FROM adminexpenses WHERE Date >= '"+start1+"' and Date < '"+end1+"';";
-                
-            return s;
-  
+/*
+ private int getCorectStrtrow(int row,int lrow){
+     row = 0;
+     int Crow = -1;
+     while(row <= lrow){
         
-       }
-       else if("Maintenance Expenses".equals(cat1)){
+          String date=jTable1.getValueAt(row,4).toString();
+                 
+           // if (date == getStartDateFormat())
+           {
+              Crow = row;
+            }
+            row++;
+    }
+     return Crow;
+ }
+  private int getCorectEndrow(int row,int lrow){
+     row = 0;
+     int Crow =-1;
+     while(row <= lrow){
         
-            s = "SELECT ExpenseID,Category,Approval FROM maintainexp WHERE Date >= '"+start1+"' and Date < '"+end1+"';";
-            
-            return s;
-
-       }
-       
-       else if ("PettyCash Expenses".equals(cat1)){
-
-            s = "SELECT ExpenseID,Category,Approval FROM pettycashexp WHERE Date >= '"+start1+"' and < '"+end1+"';";
-            return s;
-
-       }
-       
-       else if ("Other Expenses".equals(cat1)){
-
-            s = "SELECT ExpenseID,Category,Approval FROM otherexp WHERE Date >= '"+start1+"' and < '"+end1+"';";
-            return s;
-            
-       }
-       else{
-           JOptionPane.showMessageDialog(null,"UN-Successfull - Invalid Category");
-           return null;
-       }
-       
-   }
+          String date=jTable1.getValueAt(row,4).toString();
+                 
+            if (date == getEndDateFormat()){
+              Crow = row;
+            }
+            row++;
+     }
+     return Crow;
+ }
+ private void loadT(int strt,int end){
+     jTable1.addRowSelectionInterval(strt, end);
+ }
+   */
     /**
      * @param args the command line arguments
      */
@@ -696,8 +581,11 @@ public String approvals1(String cat,String start,String end){
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    public javax.swing.JTable jTable1;
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
+
+   
 }

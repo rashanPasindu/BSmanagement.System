@@ -125,10 +125,13 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         lengthbox = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setMaximumSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1366, 768));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton2.setText("BACK");
@@ -137,36 +140,57 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 jButton2ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1220, 640, 120, 46));
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setText("Product ID ");
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 50, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Product Name ");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 96, -1, -1));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Quantity ");
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 188, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel4.setText("Product Type ");
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 137, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel5.setText("Manufacture");
+        getContentPane().add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 283, -1, -1));
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("Profit Margin (%)/unit");
+        getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 89, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jLabel7.setText("MPR/unit");
+        jLabel7.setText("MRP/unit");
+        getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 45, -1, -1));
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel8.setText("Description");
+        getContentPane().add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 329, -1, -1));
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel9.setText("Date");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 232, -1, -1));
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel11.setText("Cost/unit");
+        getContentPane().add(jLabel11, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 146, -1, -1));
+        getContentPane().add(pidbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 38, 227, 33));
+        getContentPane().add(pnamebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 88, 227, 33));
+
+        quantitybox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                quantityboxKeyReleased(evt);
+            }
+        });
+        getContentPane().add(quantitybox, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 181, 227, 33));
+        getContentPane().add(manufacturebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 283, 227, 33));
 
         ptypebox.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select a Product Type", "Adhesives", "Glue", "Tape", "Adhesive Applicators", "Adhesive Removers", "All-Purpose Glue", "Super Glue", "Construction Glue", "Contact Cements", "Duct & Cloth Tape", "Epoxy Adhesives", "Floor & Tile Adhesives", "Glass & Mirror Adhesives", "Masking Paper", "Masking Tape", "Plastic Tapes", "Repair Adhesives", "Velcro", "Vinyl / Pool Adhesives", "Wood Glue" }));
         ptypebox.addActionListener(new java.awt.event.ActionListener() {
@@ -174,6 +198,21 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 ptypeboxActionPerformed(evt);
             }
         });
+        getContentPane().add(ptypebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(162, 130, 227, 33));
+
+        profitbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                profitboxKeyReleased(evt);
+            }
+        });
+        getContentPane().add(profitbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 82, 227, 33));
+
+        spsibox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                spsiboxKeyReleased(evt);
+            }
+        });
+        getContentPane().add(spsibox, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 38, 227, 33));
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Add Item");
@@ -182,6 +221,8 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(1212, 111, 130, 36));
+        getContentPane().add(descriptionbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 329, 227, 33));
 
         tt.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -199,6 +240,8 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(tt);
 
+        getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 416, 1330, 207));
+
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton3.setText("CALCULATE");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -206,8 +249,10 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 jButton3ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(953, 136, 130, 36));
 
         datebox.setDateFormatString("yyyy-MM-dd");
+        getContentPane().add(datebox, new org.netbeans.lib.awtextra.AbsoluteConstraints(159, 232, 227, 33));
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton4.setText("Update Item");
@@ -216,6 +261,14 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 jButton4ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(1212, 154, 130, 36));
+
+        costperunitbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                costperunitboxKeyReleased(evt);
+            }
+        });
+        getContentPane().add(costperunitbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 139, 227, 33));
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton6.setText("Delete Item");
@@ -224,6 +277,7 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 jButton6ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(1212, 197, 130, 36));
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton7.setText("Clear Fields");
@@ -232,6 +286,17 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 jButton7ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(1212, 240, 130, 36));
+
+        searchbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                searchboxKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                searchboxKeyReleased(evt);
+            }
+        });
+        getContentPane().add(searchbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 364, 227, 33));
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton8.setText("Clear");
@@ -240,6 +305,7 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 jButton8ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(1212, 362, 130, 36));
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
         jButton9.setText("Search");
@@ -248,185 +314,34 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
                 jButton9ActionPerformed(evt);
             }
         });
+        getContentPane().add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(1064, 362, 130, 36));
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel10.setText("Search Products Name");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(643, 371, -1, -1));
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel12.setText("Length");
+        getContentPane().add(jLabel12, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 192, -1, -1));
 
-        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        lengthbox.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                lengthboxKeyReleased(evt);
+            }
+        });
+        getContentPane().add(lengthbox, new org.netbeans.lib.awtextra.AbsoluteConstraints(697, 185, 227, 33));
+
+        jLabel13.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Adhesives, Glue & Tape ");
+        getContentPane().add(jLabel13, new org.netbeans.lib.awtextra.AbsoluteConstraints(429, 0, -1, -1));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(ptypebox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(47, 47, 47)
-                                        .addComponent(pnamebox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                    .addComponent(jLabel1)
-                                    .addGap(68, 68, 68)
-                                    .addComponent(pidbox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(layout.createSequentialGroup()
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel8)
-                                        .addComponent(jLabel9)
-                                        .addComponent(jLabel5))
-                                    .addGap(60, 60, 60)
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(manufacturebox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(datebox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(descriptionbox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGroup(layout.createSequentialGroup()
-                                    .addComponent(jLabel3)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(quantitybox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(95, 95, 95)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel11)
-                            .addComponent(jLabel12))
-                        .addGap(28, 28, 28)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lengthbox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(profitbox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(spsibox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(costperunitbox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(57, 57, 57)
-                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(105, 105, 105))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel10)
-                                        .addGap(30, 30, 30)
-                                        .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                        .addGap(107, 107, 107))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(429, 429, 429)
-                .addComponent(jLabel13)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel13)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(jLabel1))
-                                            .addComponent(pidbox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(13, 13, 13)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGap(8, 8, 8)
-                                                .addComponent(jLabel2))
-                                            .addComponent(pnamebox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(9, 9, 9)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel4)
-                                            .addComponent(ptypebox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                            .addComponent(jLabel3)
-                                            .addComponent(quantitybox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel7)
-                                                    .addComponent(spsibox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(profitbox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel6))
-                                                .addGap(103, 103, 103))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(costperunitbox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel11))
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                                    .addComponent(jLabel12)
-                                                    .addComponent(lengthbox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel9)
-                                    .addComponent(datebox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel5)
-                                    .addComponent(manufacturebox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(13, 13, 13)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(descriptionbox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(190, 190, 190)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(searchbox, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel10)
-                    .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 207, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(40, Short.MAX_VALUE))
-        );
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Images/backgrnd1.png"))); // NOI18N
+        jLabel14.setName(""); // NOI18N
+        getContentPane().add(jLabel14, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1366, 768));
 
-        setBounds(0, 0, 1366, 768);
+        pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -463,6 +378,13 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
         String costperunit = costperunitbox.getText();
         
         String length = lengthbox.getText();
+        
+        boolean check = true;
+        
+        if(!(pidbox.getText().isEmpty()) && !( pnamebox.getText().isEmpty()) &&!(ptypebox.getSelectedItem().toString().isEmpty()) &&!(quantitybox.getText().isEmpty()) &&
+        !(((JTextField)datebox.getDateEditor().getUiComponent()).getText().isEmpty()) &&!(manufacturebox.getText().isEmpty()) &&!(profitbox.getText().isEmpty()) &&!(spsibox.getText().isEmpty()) &&
+        !(descriptionbox.getText().isEmpty()) &&!( costperunitbox.getText().isEmpty()) && !(lengthbox.getText().isEmpty()) )
+        {
       
         
         //To calculate the cost per unit
@@ -497,11 +419,18 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
             
             //to load the table
             tableload();
-            
+          JOptionPane.showMessageDialog(null,"Entry Successfull");
+
+           
         } catch (Exception e){
             
             System.out.println(e);
+            JOptionPane.showMessageDialog(null,"Entry UN-Successfull");
         }
+        }
+        else{
+            JOptionPane.showMessageDialog(this, "Please enter all the required fields","Error",JOptionPane.ERROR_MESSAGE); 
+            }
        
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -619,9 +548,9 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
         
         //load table
         tableload();
-        
+        JOptionPane.showMessageDialog(null,"Update Successfull");
         }catch(Exception e){
-            
+            JOptionPane.showMessageDialog(null,"Update UN-Successfull");
         }
         }
         
@@ -650,9 +579,10 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
         
         //load table
         tableload();
+        JOptionPane.showMessageDialog(null,"Delete Successfull");
         
         }catch(Exception e){
-            
+           JOptionPane.showMessageDialog(null,"Delete UN-Successfull");
         }
         }
         
@@ -703,6 +633,119 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jButton9ActionPerformed
+
+    private void quantityboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_quantityboxKeyReleased
+        
+        String quantity = quantitybox.getText();
+           int ck = 0;
+           
+        
+        for(int i =0 ; i<quantity.length(); i++)
+                {   //Validating qty
+                  if(!Character.isDigit(quantity.charAt(i)))
+                      ck =11;
+                }
+        if(ck==11)
+        {
+//            JOptionPane.showMessageDialog(null, "Please Enter a Integer value for Quantity");
+            JOptionPane.showMessageDialog(this, "Please Enter a Integer value for Quantity","Error: Incompatible Type",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_quantityboxKeyReleased
+
+    private void searchboxKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyPressed
+
+        
+    }//GEN-LAST:event_searchboxKeyPressed
+
+    private void searchboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_searchboxKeyReleased
+        // TODO add your handling code here:
+        
+        String search=searchbox.getText();
+        
+        String sql="SELECT p.ProductID,p.ProductName,p.ProductType,p.Date,p.MRP,p.Manufacture,p.Description,p.Quantity,p.ProfitMargin,p.CostPerUnit,a.Length from products p,adhersivesandtapes a WHERE p.ProductName LIKE '%"+search+"%' AND p.ProductID=a.ProductID";
+        // String sql="SELECT ProductID,ProductName,ProductType,Quantity,Date,MRP,Manufacture,Description,Quantity,ProfitMargin,CostPerUnit FROM products WHERE ProductName LIKE '%"+search+"%'";
+        
+        try{
+            
+        pst = con.prepareStatement(sql);
+        rs = pst.executeQuery();
+        tt.setModel(DbUtils.resultSetToTableModel(rs));
+        
+        
+        }catch(Exception e)
+        {
+            
+        }
+        
+    }//GEN-LAST:event_searchboxKeyReleased
+
+    private void spsiboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_spsiboxKeyReleased
+        //validate
+         String quantity = spsibox.getText();
+           int ck = 0;
+           
+        
+        for(int i =0 ; i<quantity.length(); i++)
+                {   //Validating qty
+                  if(!Character.isDigit(quantity.charAt(i)))
+                      ck =11;
+                }
+        if(ck==11)
+        {
+           JOptionPane.showMessageDialog(this, "Please Enter a Integer value for MRP","Error: Incompatible Type",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_spsiboxKeyReleased
+
+    private void profitboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_profitboxKeyReleased
+        // TODO add your handling code here:
+        String quantity = profitbox.getText();
+           int ck = 0;
+           
+        
+        for(int i =0 ; i<quantity.length(); i++)
+                {   //Validating qty
+                  if(!Character.isDigit(quantity.charAt(i)))
+                      ck =11;
+                }
+        if(ck==11)
+        {
+            JOptionPane.showMessageDialog(this, "Please Enter a Integer value for profit","Error: Incompatible Type",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_profitboxKeyReleased
+
+    private void costperunitboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_costperunitboxKeyReleased
+        // TODO add your handling code here:
+        String quantity = costperunitbox.getText();
+           int ck = 0;
+           
+        
+        for(int i =0 ; i<quantity.length(); i++)
+                {   //Validating qty
+                  if(!Character.isDigit(quantity.charAt(i)))
+                      ck =11;
+                }
+        if(ck==11)
+        {
+            JOptionPane.showMessageDialog(this, "Please Enter a Integer value for cost","Error: Incompatible Type",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_costperunitboxKeyReleased
+
+    private void lengthboxKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_lengthboxKeyReleased
+        // TODO add your handling code here:
+        String quantity = lengthbox.getText();
+           int ck = 0;
+           
+        
+        for(int i =0 ; i<quantity.length(); i++)
+                {   //Validating qty
+                  if(!Character.isDigit(quantity.charAt(i)))
+                      ck =11;
+                }
+        if(ck==11)
+        {
+            JOptionPane.showMessageDialog(this, "Please Enter a Integer value for length","Error: Incompatible Type",JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_lengthboxKeyReleased
 
     /**
      * @param args the command line arguments
@@ -756,6 +799,7 @@ public class v_AP_Adhesives extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
