@@ -13,5 +13,7 @@ public class TestController {
     
   String a;
   String b;
+  
+  String vihanga;
     
 }
