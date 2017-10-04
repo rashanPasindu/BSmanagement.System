@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import database.DBconnect;
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +14,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -314,7 +315,7 @@ public class Loan extends javax.swing.JFrame {
         String i=loanamount.getText();
         String p=per.getText();
         String date;
-        date = ((JTextField)datebox.getDateEditor().getUiComponent()).getText();
+        date = ((JTextComponent)datebox.getDateEditor().getUiComponent()).getText();
         String t1=combo1.getSelectedItem().toString();
         String t2=combo2.getSelectedItem().toString();
         
@@ -362,7 +363,7 @@ public class Loan extends javax.swing.JFrame {
         String lt=tt.getValueAt(r, 3).toString();
         String dur=tt.getValueAt(r, 7).toString();
         String amt=tt.getValueAt(r, 5).toString();
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(r, 6).toString());
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(r, 6).toString());
         
         loanamount.setText(amt);
         combo2.setSelectedItem(dur);
@@ -395,7 +396,7 @@ public class Loan extends javax.swing.JFrame {
         String i=loanamount.getText();
         String p=per.getText();
         String date;
-        date = ((JTextField)datebox.getDateEditor().getUiComponent()).getText();
+        date = ((JTextComponent)datebox.getDateEditor().getUiComponent()).getText();
         String t1=combo1.getSelectedItem().toString();
         String t2=combo2.getSelectedItem().toString();
          

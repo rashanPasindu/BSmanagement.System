@@ -1,6 +1,7 @@
 package bill;
 
 
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -281,10 +282,10 @@ public class BillEdit extends javax.swing.JFrame {
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 600, 130, 30));
 
         jTextField6.addInputMethodListener(new java.awt.event.InputMethodListener() {
+            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
+            }
             public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
                 jTextField6InputMethodTextChanged(evt);
-            }
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
             }
         });
         jTextField6.addKeyListener(new java.awt.event.KeyAdapter() {

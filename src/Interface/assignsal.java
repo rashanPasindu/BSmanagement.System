@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import database.DBconnect;
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +14,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -182,7 +183,7 @@ public class assignsal extends javax.swing.JInternalFrame {
         String aa=a.getText();
         String cc=c.getText();
         String date;
-        date = ((JTextField)datebox.getDateEditor().getUiComponent()).getText();
+        date = ((JTextComponent)datebox.getDateEditor().getUiComponent()).getText();
         
         
          try{

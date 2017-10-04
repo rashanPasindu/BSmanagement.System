@@ -5,11 +5,12 @@
  */
 package Interface;
 
-import database.DBconnect;
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JTextField;
+import javax.swing.text.JTextComponent;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -357,7 +358,7 @@ public class calsal extends javax.swing.JInternalFrame {
         String fnl=i.getText();
         String rsn=j.getText();
         String date;
-        date = ((JTextField)datebox.getDateEditor().getUiComponent()).getText();
+        date = ((JTextComponent)datebox.getDateEditor().getUiComponent()).getText();
        
         float sal=new Float(c.getText());
         float fnll=new Float(i.getText());

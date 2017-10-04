@@ -5,6 +5,8 @@
  */
 package bsmanagementsystem.internalJFrames;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Rashan
@@ -156,7 +158,7 @@ public class Finance extends javax.swing.JInternalFrame {
 
         int n;
 
-        n = chkMonth();
+        n = chkQuater();
 
         if (n == 0){
 
@@ -170,29 +172,8 @@ public class Finance extends javax.swing.JInternalFrame {
         else if (n== 3){
 
         }
-        else if (n== 4){
-
-        }
-        else if (n== 5){
-
-        }
-        else if (n== 6){
-
-        }
-        else if (n== 7){
-
-        }
-        else if (n== 8){
-
-        }
-        else if (n== 9){
-
-        }
-        else if (n== 10){
-
-        }
-        else if (n== 11){
-
+        else{
+            
         }
 
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -201,7 +182,7 @@ public class Finance extends javax.swing.JInternalFrame {
 
         int n;
 
-        n = chkMonth();
+        n = chkQuater();
 
         if (n == 0){
 
@@ -215,29 +196,8 @@ public class Finance extends javax.swing.JInternalFrame {
         else if (n== 3){
 
         }
-        else if (n== 4){
-
-        }
-        else if (n== 5){
-
-        }
-        else if (n== 6){
-
-        }
-        else if (n== 7){
-
-        }
-        else if (n== 8){
-
-        }
-        else if (n== 9){
-
-        }
-        else if (n== 10){
-
-        }
-        else if (n== 11){
-
+        else{
+            
         }
 
     }//GEN-LAST:event_jButton2ActionPerformed
@@ -246,7 +206,7 @@ public class Finance extends javax.swing.JInternalFrame {
 
         int n;
 
-        n = chkMonth();
+        n = chkQuater();
 
         if (n == 0){
 
@@ -260,30 +220,10 @@ public class Finance extends javax.swing.JInternalFrame {
         else if (n== 3){
 
         }
-        else if (n== 4){
-
+        else{
+            
         }
-        else if (n== 5){
 
-        }
-        else if (n== 6){
-
-        }
-        else if (n== 7){
-
-        }
-        else if (n== 8){
-
-        }
-        else if (n== 9){
-
-        }
-        else if (n== 10){
-
-        }
-        else if (n== 11){
-
-        }
 
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -291,7 +231,45 @@ public class Finance extends javax.swing.JInternalFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
-            private int chkMonth(){
+     
+        private int chkQuater(){
+        
+        String[] arr = {"1","2","3","4"};
+        String a = jComboBox1.getSelectedItem().toString();
+        int i=0;
+        int n = -1;
+        if (a == "Please Select"){
+          
+            JOptionPane.showMessageDialog(null,"Please Select A Quarter");
+            return n;
+        }
+        else{     
+        n = loop(i,arr,a);
+
+        return n;
+        }
+            
+    }
+    
+      private int loop(int i,String arr[],String a){
+        
+        int c = 0;
+        
+        if(!"".equals(a)){
+        while (i < 5){
+            
+            if (arr[i] == null ? a == null : arr[i].equals(a)){
+                c = i;
+            }
+            else{
+                return i++;
+            }
+        }
+        }
+        
+        return c;
+        
+      }  /* private int chkMonth(){
         
         String[] arr = {"January","February","March","April","May","June","July","August","September","Octomber","November","December"};
         String a = jComboBox1.getSelectedItem().toString();
@@ -321,7 +299,7 @@ public class Finance extends javax.swing.JInternalFrame {
         }
         
         return c;
-    }
+    }*/
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

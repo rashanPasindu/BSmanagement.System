@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import database.DBconnect;
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -14,6 +14,7 @@ import java.util.Date;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.text.JTextComponent;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -246,7 +247,7 @@ public class Attendance extends javax.swing.JFrame {
         //add records
         
         String date;
-        date = ((JTextField)datebox.getDateEditor().getUiComponent()).getText();
+        date = ((JTextComponent)datebox.getDateEditor().getUiComponent()).getText();
         
         String Id=idno.getText();
         
@@ -273,7 +274,7 @@ public class Attendance extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel)t2.getModel();
         
         String id=t2.getValueAt(r, 0).toString();
-        Date date = new SimpleDateFormat("yyyy-MM-dd").parse((String)model.getValueAt(r, 1).toString());
+        Date date = new SimpleDateFormat("yyyy-MM-dd").parse(model.getValueAt(r, 1).toString());
        
         idno.setText(id);
         datebox.setDate(date);

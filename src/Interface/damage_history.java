@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import DBconnect.DBconect;
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -50,7 +50,7 @@ public class damage_history extends javax.swing.JFrame {
     public damage_history() {
         initComponents();
         
-        con=DBconect.connect();
+        con=DBconnect.connect();
      
             //calling methoda to load data to table
                 tableload();

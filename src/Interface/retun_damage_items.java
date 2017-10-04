@@ -5,7 +5,7 @@
  */
 package Interface;
 
-import DBconnect.DBconect;
+import DBConnect.DBconnect;
 import bill.Payment;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
@@ -127,7 +127,7 @@ public class retun_damage_items extends javax.swing.JFrame {
     public retun_damage_items() {
         initComponents();
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        con=DBconect.connect();
+        con=DBconnect.connect();
         
         
         

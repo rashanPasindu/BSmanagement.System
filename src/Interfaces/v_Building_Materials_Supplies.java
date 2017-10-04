@@ -6,7 +6,7 @@
 
 package Interfaces;
 
-import database.DBconnect;
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

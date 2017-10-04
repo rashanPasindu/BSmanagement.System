@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Interfaces;
-import database.DBconnect;
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;

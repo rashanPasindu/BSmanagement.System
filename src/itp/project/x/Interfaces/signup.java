@@ -5,8 +5,9 @@
  */
 package itp.project.x.Interfaces;
 
-import com.mysql.jdbc.Connection;
-import database.DBconnect;
+
+import DBConnect.DBconnect;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import javax.swing.JOptionPane;
 
@@ -22,7 +23,7 @@ public class signup extends javax.swing.JFrame {
     public signup() {
         initComponents();
         
-        con =DBconnect.connect();
+        con = DBconnect.connect();
     }
 
     /**

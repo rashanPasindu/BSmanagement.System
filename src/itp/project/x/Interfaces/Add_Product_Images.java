@@ -7,7 +7,7 @@ package itp.project.x.Interfaces;
 
 import bsmanagementsystem.MainPage;
 import com.mysql.jdbc.Connection;
-import database.DBconnect;
+import DBConnect.DBconnect;
 import java.awt.Image;
 import java.io.File;
 import java.io.FileInputStream;
@@ -40,7 +40,7 @@ public class Add_Product_Images extends javax.swing.JFrame {
 
     public Add_Product_Images() {
         initComponents();
-        con = DBconnect.connect();
+        con = (Connection) DBconnect.connect();
     }
     String imgPath = null;
 
@@ -201,7 +201,7 @@ public class Add_Product_Images extends javax.swing.JFrame {
     }//GEN-LAST:event_BTN_CHOOSEActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        new MainPage().setVisible(true);
+        new Product_Lookup().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton5ActionPerformed
 

@@ -5,11 +5,11 @@
  */
 package itp.project.x.Interfaces;
 
+import DBConnect.DBconnect;
 import bsmanagementsystem.MainPage;
 import classes.User;
-import com.mysql.jdbc.Connection;
-import database.DBconnect;
 import java.awt.event.KeyEvent;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -24,10 +24,11 @@ public class login extends javax.swing.JFrame {
      Connection con=null;
      PreparedStatement pst=null;
      ResultSet rs=null;
+     public String UserName;
     
     public login() {
         initComponents();
-        con =DBconnect.connect();
+        con = DBconnect.connect();
     }
 
     /**
@@ -102,6 +103,11 @@ public class login extends javax.swing.JFrame {
         jButton3.setBounds(620, 590, 104, 34);
 
         password.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        password.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                passwordActionPerformed(evt);
+            }
+        });
         getContentPane().add(password);
         password.setBounds(830, 420, 270, 40);
 
@@ -132,18 +138,20 @@ public class login extends javax.swing.JFrame {
          pst.setString(2,String.valueOf(password.getPassword()));
          ResultSet rs=pst.executeQuery();
           System.out.println("Size" + rs.getFetchSize());
-          
+          MainPage m = new MainPage();
           
           
          if(rs.next())
          {
              User.USERNAME=rs.getString("username");
              System.out.println(rs.getString("username")+" : " + rs.getString("accesslevel")); 
-             MainPage m = new MainPage();
+             UserName = rs.getString("username");
+             System.out.println(UserName);
+             new MainPage().setUSerName(UserName);
                  
                  m.setVisible(true);
                  this.dispose();
-             setVisible(false);
+             //setVisible(false);
            
              if(rs.getString("accesslevel")=="Admin" ){
                  
@@ -156,6 +164,8 @@ public class login extends javax.swing.JFrame {
                                   
              }
              else if(rs.getString("accesslevel")=="User" ){
+                 
+                 
                 Product_Lookup Lookup=new Product_Lookup();
                 Lookup.setVisible(true); 
              
@@ -190,6 +200,10 @@ public class login extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
        System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_passwordActionPerformed
 
         private void passwordKeyPressed(java.awt.event.KeyEvent evt) {                                    
         if (evt.getKeyCode()==KeyEvent.VK_ENTER){
@@ -274,13 +288,13 @@ public class login extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    public javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPasswordField password;
-    private javax.swing.JTextField user;
+    public javax.swing.JPasswordField password;
+    public javax.swing.JTextField user;
     // End of variables declaration//GEN-END:variables
 }

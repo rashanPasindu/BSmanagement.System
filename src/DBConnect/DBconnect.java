@@ -18,12 +18,12 @@ public class DBconnect {
 
        public static Connection connect()
     {
-      Connection conn=null;
+      Connection con=null;
     
     try{
     
         Class.forName("com.mysql.jdbc.Driver");
-        conn=DriverManager.getConnection("jdbc:mysql://localhost:3306/businessmanagementsystem","root","");
+        con=DriverManager.getConnection("jdbc:mysql://localhost:3306/businessmanagementsystem1","root","");
         
     
     }
@@ -33,7 +33,7 @@ public class DBconnect {
     
     }
     
-    return conn;
+    return con;
     }
     
     public static void main(String[] args) {

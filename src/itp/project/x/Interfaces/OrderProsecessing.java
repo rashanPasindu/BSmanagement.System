@@ -5,6 +5,8 @@
  */
 package itp.project.x.Interfaces;
 
+import bsmanagementsystem.MainPage;
+
 /**
  *
  * @author Asus
@@ -31,6 +33,10 @@ public class OrderProsecessing extends javax.swing.JFrame {
         jCheckBoxMenuItem2 = new javax.swing.JCheckBoxMenuItem();
         jCheckBoxMenuItem3 = new javax.swing.JCheckBoxMenuItem();
         jTabbedPane1 = new javax.swing.JTabbedPane();
+        jPanel2 = new javax.swing.JPanel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jTable3 = new javax.swing.JTable();
+        jLabel7 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -47,10 +53,6 @@ public class OrderProsecessing extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
-        jLabel7 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
@@ -71,9 +73,34 @@ public class OrderProsecessing extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+
+        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTable3.setAutoCreateRowSorter(true);
+        jTable3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
+        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Item Code", "Item Name", "Quantity"
+            }
+        ));
+        jScrollPane3.setViewportView(jTable3);
+
+        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 820, 490));
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/itp/project/x/Interfaces/images/subbg.jpeg"))); // NOI18N
+        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 520));
+
+        jTabbedPane1.addTab("Internal Check List", jPanel2);
 
         jPanel1.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -137,7 +164,7 @@ public class OrderProsecessing extends javax.swing.JFrame {
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton7.setText("Done");
-        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(513, 481, 107, 39));
+        jPanel4.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 440, 107, 39));
 
         jCheckBox1.setText("Issued");
         jPanel4.add(jCheckBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(500, 120, 80, 30));
@@ -164,43 +191,19 @@ public class OrderProsecessing extends javax.swing.JFrame {
 
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton2.setText("OK");
-        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1198, 479, 107, 35));
+        jPanel1.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(1190, 440, 107, 35));
 
         jLabel2.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jLabel2.setText("Pending Table");
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(679, 19, 249, 48));
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/itp/project/x/Interfaces/images/subbg.jpeg"))); // NOI18N
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 670, 530));
+        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(650, 0, 670, 510));
 
         jTabbedPane1.addTab("External Check List", jPanel1);
 
-        jPanel2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jTable3.setAutoCreateRowSorter(true);
-        jTable3.setFont(new java.awt.Font("Times New Roman", 1, 18)); // NOI18N
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Item Code", "Item Name", "Quantity"
-            }
-        ));
-        jScrollPane3.setViewportView(jTable3);
-
-        jPanel2.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 10, 820, 490));
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/itp/project/x/Interfaces/images/subbg.jpeg"))); // NOI18N
-        jPanel2.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 520));
-
-        jTabbedPane1.addTab("Internal Check List", jPanel2);
-
         getContentPane().add(jTabbedPane1);
-        jTabbedPane1.setBounds(10, 190, 1325, 567);
+        jTabbedPane1.setBounds(20, 190, 1325, 530);
         getContentPane().add(jTextField2);
         jTextField2.setBounds(170, 120, 186, 36);
 
@@ -246,7 +249,7 @@ public class OrderProsecessing extends javax.swing.JFrame {
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/itp/project/x/Interfaces/images/mainbglg.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, 0, 1370, 760);
+        jLabel4.setBounds(0, 0, 1368, 770);
 
         pack();
         setLocationRelativeTo(null);
@@ -268,7 +271,7 @@ public class OrderProsecessing extends javax.swing.JFrame {
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         //  Redirect to Product Lookup page
 
-        Product_Lookup pl =new Product_Lookup();
+        MainPage pl =new MainPage();
         
         pl.setVisible(true);
         this.dispose();
