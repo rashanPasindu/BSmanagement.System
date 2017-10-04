@@ -26,4 +26,5 @@ public class TestController {
   
   String hansi;
     
+  String hansi1;
 }
