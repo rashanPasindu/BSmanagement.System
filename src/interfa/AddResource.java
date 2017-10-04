@@ -5,7 +5,7 @@
  */
 package interfa;
 
-import Codes.DBconnect;
+import DBConnect.DBconnect;
 import Codes.ValidationChecker;
 import controller.EquipmentController;
 import controller.OtherResourcesController;

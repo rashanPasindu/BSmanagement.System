@@ -13,8 +13,10 @@ import bill.Payment;
 import interfa.RESource1;
 import interfa.REsource;
 import interfaces_hard.supplirs;
+import itp.project.x.Interfaces.OrderProsecessing;
 import itp.project.x.Interfaces.Product_Lookup;
 import itp.project.x.Interfaces.login;
+import java.awt.event.ActionEvent;
 
 /**
  *
@@ -22,11 +24,14 @@ import itp.project.x.Interfaces.login;
  */
 public class MainPage extends javax.swing.JFrame {
 
+    String user;
     /**
      * Creates new form MainPage
      */
     public MainPage() {
         initComponents();
+        setUser();
+        
     }
 
     /**
@@ -49,6 +54,7 @@ public class MainPage extends javax.swing.JFrame {
         jButton8 = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jButton9 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("jLabel1");
@@ -57,6 +63,7 @@ public class MainPage extends javax.swing.JFrame {
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
         setPreferredSize(new java.awt.Dimension(1366, 768));
+        setResizable(false);
         getContentPane().setLayout(null);
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -96,7 +103,7 @@ public class MainPage extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(540, 620, 250, 61);
+        jButton3.setBounds(330, 610, 250, 61);
 
         jButton4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jButton4.setText("Resource Management");
@@ -169,9 +176,22 @@ public class MainPage extends javax.swing.JFrame {
         jLabel3.setBounds(580, 60, 110, 30);
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
-        jLabel4.setText("USER");
+        jLabel4.setText("User");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(700, 60, 80, 30);
+
+        jButton9.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jButton9.setText("Order Processing");
+        jButton9.setMaximumSize(new java.awt.Dimension(250, 54));
+        jButton9.setMinimumSize(new java.awt.Dimension(250, 54));
+        jButton9.setPreferredSize(new java.awt.Dimension(250, 54));
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton9);
+        jButton9.setBounds(800, 610, 250, 61);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/back.png"))); // NOI18N
         jLabel2.setText("jLabel2");
@@ -180,7 +200,7 @@ public class MainPage extends javax.swing.JFrame {
         jLabel2.setName(""); // NOI18N
         jLabel2.setPreferredSize(new java.awt.Dimension(1366, 768));
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, -2, 1366, 770);
+        jLabel2.setBounds(0, 0, 1370, 770);
 
         setSize(new java.awt.Dimension(1384, 815));
         setLocationRelativeTo(null);
@@ -237,6 +257,28 @@ public class MainPage extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        OrderProsecessing order = new OrderProsecessing();
+        order.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton9ActionPerformed
+
+    public void setUSerName(String u){
+        
+        //login log = new login();
+        
+        user = u;
+        System.out.println(user);  
+    }
+    
+    private void setUser(){
+        
+        login log = new login();
+        
+        log.jButton2.addActionListener((ActionEvent e) -> {
+         jLabel4.setText(user);
+    });
+    }
     /**
      * @param args the command line arguments
      */
@@ -279,6 +321,7 @@ public class MainPage extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

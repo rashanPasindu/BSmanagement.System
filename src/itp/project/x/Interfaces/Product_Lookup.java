@@ -6,8 +6,9 @@
 package itp.project.x.Interfaces;
 
 import bsmanagementsystem.MainPage;
-import com.mysql.jdbc.Connection;
-import database.DBconnect;
+
+import DBConnect.DBconnect;
+import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
@@ -27,7 +28,7 @@ public class Product_Lookup extends javax.swing.JFrame {
      
     public Product_Lookup() {
         initComponents();
-        con =DBconnect.connect();
+        con = DBconnect.connect();
     }
 
     /**
@@ -52,6 +53,7 @@ public class Product_Lookup extends javax.swing.JFrame {
         jButton13 = new javax.swing.JButton();
         jButton14 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        jButton17 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -105,6 +107,11 @@ public class Product_Lookup extends javax.swing.JFrame {
 
         jButton8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton8.setText("Adhesives,Glue &Tape");
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
 
         jButton9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton9.setText("Building Meterials & Supplies");
@@ -177,6 +184,15 @@ public class Product_Lookup extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 20, 110, 40));
+
+        jButton17.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jButton17.setText("Add Product Images");
+        jButton17.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton17ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton17, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 570, 205, 35));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/itp/project/x/Interfaces/images/subbg.jpeg"))); // NOI18N
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 240, 780));
@@ -276,7 +292,7 @@ public class Product_Lookup extends javax.swing.JFrame {
                 jButton15ActionPerformed(evt);
             }
         });
-        jPanel7.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(1010, 20, 94, 42));
+        jPanel7.add(jButton15, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 20, 94, 42));
 
         jButton16.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton16.setText("Search");
@@ -386,6 +402,16 @@ public class Product_Lookup extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_jButton15ActionPerformed
 
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton8ActionPerformed
+
+    private void jButton17ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton17ActionPerformed
+        Add_Product_Images add = new Add_Product_Images();
+        add.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jButton17ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -431,6 +457,7 @@ public class Product_Lookup extends javax.swing.JFrame {
     private javax.swing.JButton jButton14;
     private javax.swing.JButton jButton15;
     private javax.swing.JButton jButton16;
+    private javax.swing.JButton jButton17;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;

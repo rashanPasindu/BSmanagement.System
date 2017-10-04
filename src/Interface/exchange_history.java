@@ -5,7 +5,7 @@
  */
 package Interface;
 import classes.return_items;
-import DBconnect.DBconect;
+import DBConnect.DBconnect;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -51,7 +51,7 @@ public class exchange_history extends javax.swing.JFrame {
      */
     public exchange_history() {
         initComponents();
-            con=DBconect.connect();
+            con=DBconnect.connect();
      
             //calling methoda to load data to table
                 tableload();

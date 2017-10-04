@@ -5,7 +5,7 @@
  */
 package classes;
 
-import DBconnect.DBconect;
+import DBConnect.DBconnect;
 import net.proteanit.sql.DbUtils;
 import Interface.retun_damage_items;
 import com.mysql.jdbc.ResultSetImpl;
@@ -50,7 +50,7 @@ public class return_items extends JFrame{
         Connection con=null;
         
         
-            con = DBconect.connect();//getting the DB connection
+            con = DBconnect.connect();//getting the DB connection
                               
                     String sql="UPDATE returns SET Item_ID=?,Product_Name=?,unit_Price=?,Qty=?,Total=?,Reason=?,money_Returns=? WHERE return_ID=?";
                     try {

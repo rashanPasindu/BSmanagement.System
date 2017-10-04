@@ -5,6 +5,8 @@
  */
 package bsmanagementsystem;
 
+import itp.project.x.Interfaces.login;
+
 /**
  *
  * @author Rashan
@@ -118,11 +120,17 @@ public class FinanceMain extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        
+        try{
         MainPage m1 = new MainPage();
         m1.setVisible(true);
         this.dispose();
-   
+        }
+        catch(Exception e){
+            login lg = new login();
+            
+            lg.setVisible(true);
+            this.dispose();
+        }
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
