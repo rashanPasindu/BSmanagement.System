@@ -15,5 +15,7 @@ public class TestController {
   String b;
   
   String vihanga;
+  
+  String c;//dulimna 
     
 }

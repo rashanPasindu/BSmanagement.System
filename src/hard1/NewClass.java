@@ -11,4 +11,10 @@ package hard1;
  */
 public class NewClass {
     String dul;
+    
+    
+    
+    
+    
+    
 }
