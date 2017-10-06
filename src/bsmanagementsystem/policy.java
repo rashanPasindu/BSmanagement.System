@@ -30,8 +30,9 @@ Connection con = null;
 PreparedStatement pst=null;
 ResultSet rs = null;
 
-int Percentage;
+float Percentage;
 float Rate;
+String newCat = null;
 
     public policy() {
        
@@ -185,7 +186,7 @@ float Rate;
         });
         getContentPane().add(jButton14, new org.netbeans.lib.awtextra.AbsoluteConstraints(1170, 660, 130, 36));
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 1, 15)); // NOI18N
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -331,7 +332,7 @@ float Rate;
        clearSelection1();
        
        //else{
-           JOptionPane.showMessageDialog(null,"UN-Successfull-Please Select and Fill All Available Options");
+           //JOptionPane.showMessageDialog(null,"UN-Successfull-Please Select and Fill All Available Options");
        //}
     }
        catch(HeadlessException e){
@@ -368,15 +369,15 @@ float Rate;
         String AddCat = buttonGroup2.getSelection().getActionCommand();
         System.out.println(AddCat);
         
-        if (AddCat == "New Category"){
-           String newCat = jTextField2.getText();
+        if ("New Category".equals(AddCat)){
+           newCat = jTextField2.getText();
            n.addPolicytoDB(newCat);
            clearSelection();
            emptycombo();
            fillcombo();
            clearTextCat();
         }
-        else if (AddCat == ""){
+        else if ("".equals(AddCat)){
                 JOptionPane.showMessageDialog(null,"UN-Successfull-Please Select the New Catogory Option");
         }  
         
@@ -389,12 +390,10 @@ float Rate;
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         policyClass n = new policyClass();
         
-        String AddCat = buttonGroup2.getSelection().getActionCommand();
-        System.out.println(AddCat);
+        //String AddCat = buttonGroup2.getSelection().getActionCommand();
+        //System.out.println(AddCat);
         
-        if ("New Category".equals(AddCat)){
-        
-           String newCat = jTextField2.getText();
+        if (newCat != null){
            n.removepolicyType(newCat);
            emptycombo();
            fillcombo();

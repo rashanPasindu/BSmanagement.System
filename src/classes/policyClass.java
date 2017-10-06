@@ -20,7 +20,7 @@ Connection con = null;
 PreparedStatement pst=null;
 ResultSet rs = null;
 
-public void sendToDB( String cat, String iDate, float rate,int percentage, String desc,String UDate){
+public void sendToDB( String cat, String iDate, float rate,float percentage, String desc,String UDate){
     con = DBconnect.connect();
         try
         {
@@ -39,7 +39,7 @@ public void sendToDB( String cat, String iDate, float rate,int percentage, Strin
                 }
 }
 
-public void updateDB(String id,float rate,int percentage, String desc,String UDate){
+public void updateDB(String id,float rate,float percentage, String desc,String UDate){
     con = DBconnect.connect();
         try
         {

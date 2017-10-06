@@ -5,8 +5,16 @@
  */
 package bsmanagementsystem;
 
+import DBConnect.DBconnect;
 import classes.validations;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import net.proteanit.sql.DbUtils;
 
 /**
  *
@@ -25,6 +33,7 @@ public class TaxSummary extends javax.swing.JFrame {
     
     public TaxSummary() {
         initComponents();
+        resetTable();
     }
 
     /**
@@ -55,6 +64,7 @@ public class TaxSummary extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 22)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Tax Summary");
         jLabel1.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
@@ -73,6 +83,7 @@ public class TaxSummary extends javax.swing.JFrame {
         });
         getContentPane().add(jButton13, new org.netbeans.lib.awtextra.AbsoluteConstraints(1194, 48, -1, -1));
 
+        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -161,10 +172,15 @@ public class TaxSummary extends javax.swing.JFrame {
 
         String dis = concat(Sdate,Edate,m,m4);
         jTextField1.setText(dis);
+        
+        resetTable();
+        tableLoad();
+        
+        
         }
         catch (Exception e){
             System.out.println(e);
-            new validations().validateApproval();
+            //new validations().validateApproval();
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed
@@ -307,21 +323,24 @@ String getStartDate()
     return mf;
 }
     private String getStartDateFormat(){
-      String SDate = this.jDateChooser1.getDate().toString();
+      
+     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
      
-     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-     String format = formatter.format(SDate);
-     System.out.println(SDate);
-     return SDate;
+     String date1 = sdf.format(this.jDateChooser1.getDate());
+     
+     System.out.println(date1);
+     
+     return date1;
     }
     
     private String getEndDateFormat(){
-          String EDate = this.jDateChooser2.getDate().toString();
+          SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
      
-     SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
-     String format = formatter.format(EDate);
-     System.out.println(EDate);
-     return EDate;
+     String date1 = sdf.format(this.jDateChooser2.getDate());
+     
+     System.out.println(date1);
+      
+     return date1;
     }
     
     public String concat(String Sdate,String Edate,String m,String m4){
@@ -350,7 +369,50 @@ String getStartDate()
         
         return cfinal;
 }
-
+ private void resetTable(){
+     
+     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+     //jTable1.setModel(model);
+     model.setRowCount(0);
+     
+ }
+ 
+ public final void tableLoad(){
+             
+          String start = this.getStartDateFormat();
+          String end = this.getEndDateFormat();
+          
+           Connection con1 = null;
+       PreparedStatement pst1=null;
+       con1 = DBconnect.connect();
+       ResultSet rs = null;
+       //int num = n.jTable1.getColumnCount();
+       //int i;
+       
+    
+        try
+        {
+            String s = "SELECT `ExpenseID`,`Category`,`Method`,`Approval`,`Date` FROM `adminexpenses` WHERE `Date` >= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` <= '"+end+"') AND `Category` = any (SELECT `Category` WHERE `Category` = 'Tax')";
+            pst1 = con1.prepareStatement(s);
+            //pst1.execute(s);
+            rs = pst1.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            JOptionPane.showMessageDialog(null,"Successfull");
+            
+            
+        }
+        
+       catch(SQLException e)
+                {
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(null,"UN-Successfull - Invalid Period of Time - Theres no data in between the selected period");
+                }
+        
+       
+          
+          
+           
+     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton13;
