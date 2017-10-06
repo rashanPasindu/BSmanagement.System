@@ -1203,7 +1203,7 @@ public class ExpenseInput extends javax.swing.JFrame {
         {
             
             String sql;
-            sql = "SELECT  ExpenseID,Category,Method,Amount,Description,Approval FROM adminexpenses";
+            sql = "SELECT  ExpenseID,Category,Method,Amount,Description,Approval,Date FROM adminexpenses";
             pst = con.prepareStatement(sql);
             rs = pst.executeQuery(sql);
             jTable1.setModel(DbUtils.resultSetToTableModel(rs));
@@ -1264,7 +1264,7 @@ public class ExpenseInput extends javax.swing.JFrame {
         {
             
             String sql;
-            sql = "SELECT ExpenseID,Category,Method,Amount,Description,Approval FROM maintainexp";
+            sql = "SELECT ExpenseID,Category,Method,Amount,Description,Approval,Date FROM maintainexp";
             pst1 = con.prepareStatement(sql);
             rs1 = pst1.executeQuery(sql);
             jTable3.setModel(DbUtils.resultSetToTableModel(rs1));
@@ -1289,7 +1289,7 @@ public class ExpenseInput extends javax.swing.JFrame {
         {
             
             String sql;
-            sql = "SELECT ExpenseID,Category,Method,Amount,Description,Approval FROM pettycashexp";
+            sql = "SELECT ExpenseID,Category,Method,Amount,Description,Approval,Date FROM pettycashexp";
             pst1 = con.prepareStatement(sql);
             rs1 = pst1.executeQuery(sql);
             jTable2.setModel(DbUtils.resultSetToTableModel(rs1));
@@ -1314,7 +1314,7 @@ public class ExpenseInput extends javax.swing.JFrame {
         {
             
             String sql;
-            sql = "SELECT ExpenseID,Category,Method,Amount,Description,Approval FROM otherexp";
+            sql = "SELECT ExpenseID,Category,Method,Amount,Description,Approval,Date FROM otherexp";
             pst1 = con.prepareStatement(sql);
             rs1 = pst1.executeQuery(sql);
             jTable4.setModel(DbUtils.resultSetToTableModel(rs1));

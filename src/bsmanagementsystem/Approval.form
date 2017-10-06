@@ -9,6 +9,7 @@
     <Property name="minimumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
       <Dimension value="[1366, 768]"/>
     </Property>
+    <Property name="resizable" type="boolean" value="false"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -100,7 +101,7 @@
             <StringItem index="0" value="Please Select"/>
             <StringItem index="1" value="Administration Expenses"/>
             <StringItem index="2" value="Petty Cash Expenses"/>
-            <StringItem index="3" value="Maintenance Exp"/>
+            <StringItem index="3" value="Maintenance Expenses"/>
             <StringItem index="4" value="Other Expenses"/>
           </StringArray>
         </Property>

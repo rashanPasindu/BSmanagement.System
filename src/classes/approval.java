@@ -10,10 +10,8 @@ import bsmanagementsystem.Approval;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import javax.swing.JOptionPane;
-import javax.swing.table.DefaultTableModel;
 import net.proteanit.sql.DbUtils;
 
 /**
@@ -69,7 +67,7 @@ public String concat(String Sdate,String Edate,String m,String m4){
         return cfinal;
 }
   
-   
+   /*
   public void getapprovals(String cat,String start,String end){
        
        Approval n = new Approval(); 
@@ -78,8 +76,8 @@ public String concat(String Sdate,String Edate,String m,String m4){
        PreparedStatement pst1=null;
        con1 = DBconnect.connect();
        ResultSet rs = null;
-       int num = n.jTable1.getColumnCount();
-       int i;
+       //int num = n.jTable1.getColumnCount();
+       //int i;
        
        
       try{
@@ -87,11 +85,11 @@ public String concat(String Sdate,String Edate,String m,String m4){
        if ("Administration Expenses".equals(cat)){
         try
         {
-            String s = "SELECT ExpenseID,Category,Approval FROM adminexpenses WHERE Date BETWEEN '"+start+"' and '"+end+"' ORDER BY ExpenseID";
+            String s = "SELECT `ExpenseID`,`Category`,`Approval`,`Date` FROM `adminexpenses` WHERE `Date` >= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` <= '"+end+"')";
             pst1 = con1.prepareStatement(s);
-            pst1.execute(s);
-            rs = pst1.executeQuery();
-             n.jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            //pst1.execute(s);
+            rs = pst1.executeQuery(s);
+            n.jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             JOptionPane.showMessageDialog(null,"Successfull");
             
             
@@ -110,9 +108,10 @@ public String concat(String Sdate,String Edate,String m,String m4){
              try
         {
             
-            String s = "SELECT ExpenseID,Category,Approval FROM maintainexp WHERE Date BETWEEN '"+start+"' and '"+end+"' ORDER BY ExpenseID";
+            String s = "SELECT `ExpenseID`,`Category`,`Approval`,`Date` FROM `maintainexp` WHERE `Date` >= any (SELECT `Date` FROM `maintainexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `maintainexp` WHERE `Date` <= '"+end+"')";
             pst1 = con1.prepareStatement(s);
-            pst1.execute();
+            //pst1.execute();
+            rs = pst1.executeQuery(s);
             n.jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             JOptionPane.showMessageDialog(null,"Successfull");
             
@@ -125,12 +124,13 @@ public String concat(String Sdate,String Edate,String m,String m4){
                 }
        }
        
-       else if (cat == "PettyCash Expenses"){
+       else if (cat == "Petty Cash Expenses"){
                try
         {
-            String s = "SELECT ExpenseID,Category,Approval FROM pettycashexp WHERE Date BETWEEN '"+start+"' and '"+end+"' ORDER BY ExpenseID";
+            String s = "SELECT `ExpenseID`,`Category`,`Approval`,`Date` FROM `pettycashexp` WHERE `Date` >= any (SELECT `Date` FROM `pettycashexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `pettycashexp` WHERE `Date` <= '"+end+"')";
             pst1 = con1.prepareStatement(s);
-            pst1.execute();
+            //pst1.execute();
+            rs = pst1.executeQuery(s);
             n.jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             JOptionPane.showMessageDialog(null,"Entry Successfull");
             
@@ -146,9 +146,10 @@ public String concat(String Sdate,String Edate,String m,String m4){
        else if (cat == "Other Expenses"){
                try
         {
-            String s = "SELECT ExpenseID,Category,Approval FROM otherexp WHERE Date BETWEEN '"+start+"' and '"+end+"' ORDER BY ExpenseID";
+            String s = "SELECT `ExpenseID`,`Category`,`Approval`,`Date` FROM `otherexp` WHERE `Date` >= any (SELECT `Date` FROM `otherexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `otherexp` WHERE `Date` <= '"+end+"')";
             pst1 = con1.prepareStatement(s);
-            pst1.execute();
+            //pst1.execute();
+            rs = pst1.executeQuery(s);
             n.jTable1.setModel(DbUtils.resultSetToTableModel(rs));
             JOptionPane.showMessageDialog(null,"Successfull");
             
@@ -169,40 +170,8 @@ public String concat(String Sdate,String Edate,String m,String m4){
       }
    }
   
+
    /*
-      public String approvals1(String cat,String start,String end){
-          
-       cat1 = cat;
-       start1 = start;
-       end1 = end;   
-       String s;
-       
-       if (null == cat1){
-           JOptionPane.showMessageDialog(null,"UN-Successfull - Invalid Category");
-           return null;
-       }
-       else switch (cat1) {
-            case "Administration Expenses":
-                s = "SELECT ExpenseID,Category,Approval FROM adminexpenses WHERE Date >= '"+start1+"' and Date < '"+end1+"';";
-                
-                return s;
-            case "Maintenance Expenses":
-                s = "SELECT ExpenseID,Category,Approval FROM maintainexp WHERE Date BETWEEN '"+start1+"' & '"+end1+"';";
-                
-                return s;
-            case "PettyCash Expenses":
-                s = "SELECT ExpenseID,Category,Approval FROM pettycashexp WHERE Date BETWEEN '"+start1+"' & '"+end1+"';";
-                return s;
-            case "Other Expenses":
-                s = "SELECT ExpenseID,Category,Approval FROM otherexp WHERE Date BETWEEN '"+start1+"' & '"+end1+"';";
-                return s;
-            default:
-                JOptionPane.showMessageDialog(null,"UN-Successfull - Invalid Category");
-                return null;
-        }
-       
-   }
-   
  public int chkDate(String cat,String Date){
      
      if (cat == "Administration Expenses"){

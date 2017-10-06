@@ -1,4 +1,4 @@
-/*
+ /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
@@ -13,7 +13,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
+import java.util.Vector;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import jdk.internal.dynalink.support.AutoDiscovery;
 import net.proteanit.sql.DbUtils;
 
 
@@ -74,6 +77,7 @@ public class Approval extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(1366, 768));
         setMinimumSize(new java.awt.Dimension(1366, 768));
+        setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -115,7 +119,7 @@ public class Approval extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 140, 820, 513));
 
         jComboBox1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select", "Administration Expenses", "Petty Cash Expenses", "Maintenance Exp", "Other Expenses" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Please Select", "Administration Expenses", "Petty Cash Expenses", "Maintenance Expenses", "Other Expenses" }));
         jComboBox1.setMaximumSize(new java.awt.Dimension(216, 54));
         jComboBox1.setMinimumSize(new java.awt.Dimension(216, 54));
         jComboBox1.setPreferredSize(new java.awt.Dimension(216, 54));
@@ -219,13 +223,8 @@ public class Approval extends javax.swing.JFrame {
         String dis = ap.concat(Sdate,Edate,m,m4);
        
         jTextField1.setText(dis);
-       //tableLoad(this.getCat());
-       
-        String s = this.getStartDateFormat();
-        String e = this.getEndDateFormat();
-          
-        ap.getapprovals(this.getCat(),s,e);
-        
+        resetTable();
+        tableLoad(this.getCat());
        }
        catch (Exception e){
            System.out.println(e);
@@ -266,7 +265,7 @@ public class Approval extends javax.swing.JFrame {
           String s = this.getStartDateFormat();
           String e = this.getEndDateFormat();
           
-          new approval().getapprovals(this.getCat(),s,e);
+          getapprovals(this.getCat(),s,e);
           
            
      }
@@ -281,7 +280,7 @@ public class Approval extends javax.swing.JFrame {
          // end = getEndDateFormat();
         
          if(null == cat){}
-      else switch (cat) {
+         else switch (cat) {
             case "Administration Expenses":
                 try
                 {
@@ -503,6 +502,14 @@ String getMonthEnd(){
       
      return date1;
  }
+ 
+ private void resetTable(){
+     
+     DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+     //jTable1.setModel(model);
+     model.setRowCount(0);
+     
+ }
 /*
  private int getCorectStrtrow(int row,int lrow){
      row = 0;
@@ -587,5 +594,105 @@ String getMonthEnd(){
     public javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 
-   
+     public void getapprovals(String cat,String start,String end){
+       
+       //Approval n = new Approval(); 
+      
+       Connection con1 = null;
+       PreparedStatement pst1=null;
+       con1 = DBconnect.connect();
+       ResultSet rs = null;
+       //int num = n.jTable1.getColumnCount();
+       //int i;
+       
+       
+      try{
+              
+       if ("Administration Expenses".equals(cat)){
+        try
+        {
+            String s = "SELECT `ExpenseID`,`Category`,`Method`,`Approval`,`Date` FROM `adminexpenses` WHERE `Date` >= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` <= '"+end+"')";
+            pst1 = con1.prepareStatement(s);
+            //pst1.execute(s);
+            rs = pst1.executeQuery();
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            JOptionPane.showMessageDialog(null,"Successfull");
+            
+            
+        }
+        
+    catch(SQLException e)
+                {
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(null,"UN-Successfull");
+                }
+        
+       }
+       else if(cat == "Maintenance Expenses"){
+        
+        
+             try
+        {
+            
+            String s = "SELECT `ExpenseID`,`Category`,`Method`,`Approval`,`Date` FROM `maintainexp` WHERE `Date` >= any (SELECT `Date` FROM `maintainexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `maintainexp` WHERE `Date` <= '"+end+"')";
+            pst1 = con1.prepareStatement(s);
+            //pst1.execute();
+            rs = pst1.executeQuery(s);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            JOptionPane.showMessageDialog(null,"Successfull");
+            
+        }
+        
+    catch(SQLException e)
+                {
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(null,"Un-Successfull");
+                }
+       }
+       
+       else if (cat == "Petty Cash Expenses"){
+               try
+        {
+            String s = "SELECT `ExpenseID`,`Category`,`Method`,`Approval`,`Date` FROM `pettycashexp` WHERE `Date` >= any (SELECT `Date` FROM `pettycashexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `pettycashexp` WHERE `Date` <= '"+end+"')";
+            pst1 = con1.prepareStatement(s);
+            //pst1.execute();
+            rs = pst1.executeQuery(s);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            JOptionPane.showMessageDialog(null,"Entry Successfull");
+            
+        }
+        
+    catch(SQLException e)
+                {
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(null,"Successfull");
+                }
+       }
+       
+       else if (cat == "Other Expenses"){
+               try
+        {
+            String s = "SELECT `ExpenseID`,`Category`,`Method`,`Approval`,`Date` FROM `otherexp` WHERE `Date` >= any (SELECT `Date` FROM `otherexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `otherexp` WHERE `Date` <= '"+end+"')";
+            pst1 = con1.prepareStatement(s);
+            //pst1.execute();
+            rs = pst1.executeQuery(s);
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            JOptionPane.showMessageDialog(null,"Successfull");
+            
+        }
+        
+    catch(SQLException e)
+                {
+                    System.out.println(e);
+                    JOptionPane.showMessageDialog(null,"Un-Successfull");
+                }
+       }
+       else{
+           JOptionPane.showMessageDialog(null,"UN-Successfull - Invalid Category");
+       }
+      }
+      catch (Exception e){
+          System.out.println(e);
+      }
+   }
 }
