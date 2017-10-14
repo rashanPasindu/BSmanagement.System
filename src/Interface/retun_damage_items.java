@@ -284,20 +284,14 @@ String tot;
         //assign data to variables
         String bill_id=rtn_dmg_tbl.getValueAt(r,0).toString();
         String item_code=rtn_dmg_tbl.getValueAt(r,1).toString();
-        //String item_name=rtn_dmg_tbl.getValueAt(r,2).toString();
-        //String qty=rtn_dmg_tbl.getValueAt(r,3).toString();
-        //String total=rtn_dmg_tbl.getValueAt(r,4).toString();
+        
        
-        //String val=rs5.toString();
+       
         
         //assigning data to textfields and combo box
         rtn_dmg_bill_id_txt.setText(bill_id);
         rtn_dmg_item_id_txt.setText(item_code);
-        //rtn_dmg_exg_item_id_txt.setText(item_code);
-        //rtn_dmg_item_name_txt.setText(item_name);
-        //rtn_dmg_unit_price_txt.setText(val);
-        //rtn_dmg_qty_txt.setText(qty);
-        //rtn_dmg_total_txt.setText(total);
+       
      }
      
      
@@ -316,27 +310,19 @@ String tot;
                 val=rs5.getString("CostPerUnit");
                 i_name=rs5.getString("ProductName");
                 prod_type=rs5.getString("ProductType");
-        rtn_dmg_unit_price_txt.setText(val);
-        rtn_dmg_item_name_txt.setText(i_name);
+                rtn_dmg_unit_price_txt.setText(val);
+                rtn_dmg_item_name_txt.setText(i_name);
               System.out.println(prod_type);
              
         } catch (Exception e) {
         }
          
-         
-        
-        
-       
      }
-     
-     
      
      
      //method to load all data into the table
      public void select_bill()
     {
-        
-        
         
         try {
              String sql="SELECT Bill_ID,item_code,Item_Name,QTY,Net_Amount FROM bill WHERE bill_ID='"+rtn_dmg_srch_id_txt.getText()+"'";

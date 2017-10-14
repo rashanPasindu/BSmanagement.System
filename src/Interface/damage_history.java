@@ -6,6 +6,7 @@
 package Interface;
 
 import DBConnect.DBconnect;
+import Interfaces_return_classes.damageClass;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -21,27 +22,8 @@ public class damage_history extends javax.swing.JFrame {
      
     //database connection
     Connection con=null;
-    Statement stm=null;
-    
-    //load table
+    PreparedStatement stm=null;
     ResultSet rs=null;
-    PreparedStatement cmb=null;  
-     
-    //load selected id to table
-    ResultSet rs1=null;
-    PreparedStatement cmb1=null;
-    
-     //get the value if money return
-    ResultSet rs2=null;
-    PreparedStatement cmb2=null;
-    int x=0;
-    String ret_mny;
-    
-    //update data
-    PreparedStatement pst;
-    
-    //update delete
-    PreparedStatement pst1;
     
     
     /**
@@ -66,8 +48,8 @@ public class damage_history extends javax.swing.JFrame {
     {
         try {
              String sql="SELECT Item_ID,Product_Name ,unit_Price,Qty,Total ,Reason,money_Returns FROM returns  WHERE status='damage'";
-             cmb=con.prepareStatement(sql);
-             rs=cmb.executeQuery();
+             stm=con.prepareStatement(sql);
+             rs=stm.executeQuery();
              
              //loading data to table from database
              damage_tbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
@@ -82,11 +64,11 @@ public class damage_history extends javax.swing.JFrame {
     {
         try {
              String sql="SELECT Item_ID,Product_Name ,unit_Price,Qty,Total ,Reason,money_Returns FROM returns WHERE return_ID='"+src_item_id.getText()+"'";
-             cmb1=con.prepareStatement(sql);
-             rs1=cmb1.executeQuery();
+             stm=con.prepareStatement(sql);
+             rs=stm.executeQuery();
              
              //loading data to table from database
-             damage_tbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs1));
+             damage_tbl.setModel(net.proteanit.sql.DbUtils.resultSetToTableModel(rs));
              
         } catch (Exception e) {
         }
@@ -94,14 +76,13 @@ public class damage_history extends javax.swing.JFrame {
      
      
      
-      public void load_values_frm_table()
-    {
+      public void load_values_frm_table() {
         
         //getting database value for money return
         try {
              String sql1="SELECT money_Returns  FROM returns WHERE Item_ID='"+src_item_id.getText()+"'";
-             cmb2=con.prepareStatement(sql1);
-             rs2=cmb2.executeQuery();
+             stm=con.prepareStatement(sql1);
+             rs=stm.executeQuery();
              
             
              
@@ -135,31 +116,9 @@ public class damage_history extends javax.swing.JFrame {
         
     }
      
-    
-    //method to update return data
-     public void edit_return()
-    {
-        int x=JOptionPane.showConfirmDialog(null,"Do you want to update");
-                if(x==0){
-                    String item_id=item_id_txt.getText();
-                    String item_name=item_name_txt.getText();
-                    String unit_prc=item_unit_price_txt.getText();
-                    String qty=qty_txt.getText();
-                    String total=total_amount_txt.getText();
-                    String reason=reason_txt.getText();
-                    String mny_return=money_return_chk.getText();
-                    
-                    String sql="UPDATE returns SET Item_ID='"+item_id+"',Product_Name='"+item_name+"',unit_Price='"+unit_prc+"',Qty='"+qty+"',Total='"+total+"',Reason='"+reason+"',money_Returns='"+mny_return+"' WHERE return_ID='"+src_item_id.getText()+"'";
-                    try {
-                        pst=con.prepareStatement(sql);
-                        pst.execute();
-                    } catch (Exception e) {
-                    }
-                    
-                    //message after data edit
-            JOptionPane.showMessageDialog(rootPane,"Data been updated");
-            
-                    //clear text fields and combo box
+      
+     //Clear Text
+     public void clear(){
                     item_id_txt.setText("");
                     item_name_txt.setText("");
                     item_unit_price_txt.setText("");
@@ -167,48 +126,9 @@ public class damage_history extends javax.swing.JFrame {
                     total_amount_txt.setText("");
                     reason_txt.setText("");
                     money_return_chk.setText("");
-                    src_item_id.setText("");
-      
-      
-               }
-              
-    //load data to table
-        tableload();
-    }
-    
      
-     //method to update return data
-     public void delete_return()
-    {
-        int x=JOptionPane.showConfirmDialog(null,"Do you want to delete");
-                if(x==0){
-                    String sql="DELETE FROM returns WHERE return_ID='"+src_item_id.getText()+"'";
-                        try {
-                        pst1=con.prepareStatement(sql);
-                        pst1.execute();
-                    } catch (Exception e) {
-                    }
-                    
-                    //message after data edit
-            JOptionPane.showMessageDialog(rootPane,"Data been updated");
-                    
-                    //clear text fields and combo box
-                    item_id_txt.setText("");
-                    item_name_txt.setText("");
-                    item_unit_price_txt.setText("");
-                    qty_txt.setText("");
-                    total_amount_txt.setText("");
-                    reason_txt.setText("");
-                    money_return_chk.setText("");
-                    src_item_id.setText("");
-               }
-              
-    //load data to table
-        tableload();
-    }
+     }
      
-     
-
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -409,12 +329,39 @@ public class damage_history extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
                 // update database data for return
-                edit_return();
+                    damageClass n = new damageClass();
+                
+                    String item_id=item_id_txt.getText();
+                    String item_name=item_name_txt.getText();
+                    String unit_prc=item_unit_price_txt.getText();
+                    String qty=qty_txt.getText();
+                    String total=total_amount_txt.getText();
+                    String reason=reason_txt.getText();
+                    String mny_return=money_return_chk.getText();
+                    String id=src_item_id.getText();
+                    
+                    n.updateDB(id, item_id, item_name, unit_prc, qty, total, reason, mny_return);
+                    //clear Text Fields
+                    clear();
+                    
+                    //load table
+                    tableload();
+                
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
                   // delete database data for return
-                delete_return();
+                damageClass n=new damageClass();
+                
+                String id=src_item_id.getText();
+                n.removeDamage(id);
+                
+                //clear Text Fields
+                    clear();
+                    
+                //load table
+                    tableload();
+                
     }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
