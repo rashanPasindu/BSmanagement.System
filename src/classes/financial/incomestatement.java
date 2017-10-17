@@ -23,21 +23,21 @@ public class incomestatement {
     PreparedStatement pst=null;
     ResultSet rs = null;
     
-    float incomeTotal = 0;
-    float salesTotal =0;
+    float incomeTotal = 0; //done_coding_method
+    float salesTotal =0; //done_coding_method
     float disReceivedTotal = 0;
     float otherIncomesTotal = 0;
     
-    float expTotal = 0;
-    float adminExpTotal = 0;
-    float maintExpTotal = 0;
-    float pettyExpTotal = 0;
-    float otherExpTotal = 0;
-    float disAllowedTotal = 0;
+    float expTotal = 0; //done_coding_method
+    float adminExpTotal = 0; //done_coding_method
+    float maintExpTotal = 0; //done_coding_method
+    float pettyExpTotal = 0; //done_coding_method
+    float otherExpTotal = 0; //done_coding_method
+    float disAllowedTotal = 0; //done_coding_method
     
-    float profitBeforeTax = 0;
-    float profitAfterTax = 0;
-    float taxTotal = 0;
+    float profitBeforeTax = 0; //done_coding_method
+    float profitAfterTax = 0; //done_coding_method
+    float taxTotal = 0; //done_coding_method
     
     
     
@@ -66,7 +66,7 @@ public class incomestatement {
         con = DBconnect.connect();
         
         try{
-            String s = "SELECT SUM(Total) FROM receipt WHERE datetime BETWEEN '"+start+"'  AND '"+end+"'"; //YYYY-MM-DD HH:MM:SS
+            String s = "SELECT SUM(Total) FROM receipt WHERE `datetime` >= any (SELECT `datetime` FROM `receipt` WHERE `datetime` >= '"+start+"') AND `datetime` <= any (SELECT `datetime` FROM `receipt` WHERE `datetime` <= '"+end+"'"; //YYYY-MM-DD HH:MM:SS
             pst = con.prepareStatement(s);
             pst.execute();
             rs= pst.executeQuery(s);
@@ -102,7 +102,7 @@ public class incomestatement {
          con = DBconnect.connect();
         
         try{
-            String s = "SELECT SUM(Amount) FROM adminexpenses WHERE Date BETWEEN '"+start+"'  AND '"+end+"'"; //YYYY-MM-DD HH:MM:SS
+            String s = "SELECT SUM(`Amount`) FROM `adminexpenses` WHERE `Date` >= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` <= '"+end+"')"; //YYYY-MM-DD HH:MM:SS
             pst = con.prepareStatement(s);
             pst.execute();
             rs= pst.executeQuery(s);
@@ -126,7 +126,7 @@ public class incomestatement {
            con = DBconnect.connect();
         
         try{
-            String s = "SELECT SUM(Amount) FROM maintainexp WHERE Date BETWEEN '"+start+"'  AND '"+end+"'"; //YYYY-MM-DD HH:MM:SS
+            String s = "SELECT SUM(`Amount`) FROM `maintainexp` WHERE `Date` >= any (SELECT `Date` FROM `maintainexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `maintainexp` WHERE `Date` <= '"+end+"')"; //YYYY-MM-DD HH:MM:SS
             pst = con.prepareStatement(s);
             pst.execute();
             rs= pst.executeQuery(s);
@@ -149,7 +149,7 @@ public class incomestatement {
             con = DBconnect.connect();
         
         try{
-            String s = "SELECT SUM(Amount) FROM pettycashexp WHERE Date BETWEEN '"+start+"'  AND '"+end+"'"; //YYYY-MM-DD HH:MM:SS
+            String s = "SELECT SUM(`Amount`) FROM `pettycashexp` WHERE `Date` >= any (SELECT `Date` FROM `pettycashexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `pettycashexp` WHERE `Date` <= '"+end+"')"; //YYYY-MM-DD HH:MM:SS
             pst = con.prepareStatement(s);
             pst.execute();
             rs= pst.executeQuery(s);
@@ -172,7 +172,7 @@ public class incomestatement {
             con = DBconnect.connect();
         
         try{
-            String s = "SELECT SUM(Amount) FROM otherexp WHERE Date BETWEEN '"+start+"'  AND '"+end+"'"; //YYYY-MM-DD HH:MM:SS
+            String s = "SELECT SUM(`Amount`) FROM `otherexp` WHERE `Date` >= any (SELECT `Date` FROM `otherexp` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `otherexp` WHERE `Date` <= '"+end+"')"; //YYYY-MM-DD HH:MM:SS
             pst = con.prepareStatement(s);
             pst.execute();
             rs= pst.executeQuery(s);
@@ -195,7 +195,7 @@ public class incomestatement {
         con = DBconnect.connect();
         
         try{
-            String s = "SELECT SUM(Amount) FROM adminexpenses WHERE (Date BETWEEN '"+start+"' AND '"+end+"') AND Category = Tax"; //YYYY-MM-DD HH:MM:SS
+            String s = "SELECT SUM(`Amount`) FROM `adminexpenses` WHERE `Date` >= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` >= '"+start+"') AND `Date` <= any (SELECT `Date` FROM `adminexpenses` WHERE `Date` <= '"+end+"') AND `Category` = any (SELECT `Category` WHERE `Category` = 'Tax')"; //YYYY-MM-DD HH:MM:SS
             pst = con.prepareStatement(s);
             pst.execute();
             rs= pst.executeQuery(s);
@@ -217,7 +217,7 @@ public class incomestatement {
         String disAllowed = null;
         
         try{
-            String s = "SELECT SUM(Discounts_Allowed) FROM bill WHERE bill_Date BETWEEN '"+start+"' AND '"+end+"'"; //YYYY-MM-DD HH:MM:SS
+            String s = "SELECT SUM(`Discounts_Allowed`) FROM `bill` WHERE `bill_Date` >= any (SELECT `bill_Date` FROM `bill` WHERE `bill_Date` >= '"+start+"') AND `bill_Date` <= any (SELECT `bill_Date` FROM `bill` WHERE `bill_Date` <= '"+end+"')"; //YYYY-MM-DD HH:MM:SS
             pst = con.prepareStatement(s);
             pst.execute();
             rs= pst.executeQuery(s);
@@ -232,7 +232,19 @@ public class incomestatement {
                     JOptionPane.showMessageDialog(null,"UN-Successfull Find");
                      return disAllowed;
         } 
-    }     
+    }  
+    
+    private String disReceivedToT(String start, String end){
+        String disRe = null;
+        
+        return disRe;
+    }
+    
+    private String OtherIncomesToT(String start, String end){
+        String otherIncome = null;
+        
+        return otherIncome;
+    }
     private String getStartDateFormat(String start){
      
      //String SDate = this.jDateChooser1.getDate().toString();

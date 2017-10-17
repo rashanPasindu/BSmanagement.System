@@ -269,7 +269,20 @@ public class Finance extends javax.swing.JInternalFrame {
         
         return c;
         
-      }  /* private int chkMonth(){
+      }  
+      
+      private String getYearSelected(){
+          
+          return jComboBox2.getSelectedItem().toString();
+      }
+      
+      private String getQuaterSelected(){
+          
+          return jComboBox1.getSelectedItem().toString();
+      }
+      
+      
+      /* private int chkMonth(){
         
         String[] arr = {"January","February","March","April","May","June","July","August","September","Octomber","November","December"};
         String a = jComboBox1.getSelectedItem().toString();
